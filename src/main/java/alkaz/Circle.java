@@ -9,14 +9,20 @@ public class Circle {
         this.center = center;
     }
 
-    public boolean intersectsWith(Circle other){
+    public boolean intersectsWith(Circle other) {
         double d = center.distanceTo(other.center);
-        if(d <= r+other.r) {
-            if (r - d > other.r || other.r - d > r )
+        if (d <= r + other.r) {
+            if (r - d > other.r || other.r - d > r)
                 return false;
             else
                 return true;
-        }
+        } else
+            return false;
+    }
+
+    public boolean equals(Circle other) {
+        if (r == other.r && other.r == r)
+            return true;
         else
             return false;
     }
