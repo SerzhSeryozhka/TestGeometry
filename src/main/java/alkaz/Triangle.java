@@ -34,11 +34,23 @@ public class Triangle {
     }
 
     public boolean equals(Triangle other) {
-        if (vertex1.distanceTo(vertex2) == other.vertex1.distanceTo(vertex2)
-                && vertex2.distanceTo(vertex3) == other.vertex2.distanceTo(vertex3)
-                && vertex3.distanceTo(vertex1) == other.vertex3.distanceTo(vertex1))
-            return true;
+        double ab11 = vertex1.distanceTo(vertex2);
+        double ac12 = vertex3.distanceTo(vertex1);
+        double bc13 = vertex2.distanceTo(vertex3);
+        double ab21 = other.vertex1.distanceTo(other.vertex2);
+        double ac22 = other.vertex3.distanceTo(other.vertex1);
+        double bc23 = other.vertex2.distanceTo(other.vertex3);
+        double ab= vertex2.distanceTo(vertex1);
+        double ac= vertex2.distanceTo(vertex3);
+        double bc= vertex3.distanceTo(vertex2);
+        if (ab11 == ab21 && ac12 == ac22 && bc13 == bc23
+                || ab11 == ac22 && ac12 == bc23 && bc13 == ab21
+                || ab11 == bc23 && ac12 == ab21 && bc13 == ac22
+                || ab== ab21&&ac==ac22&&bc==bc23
+                || ab == ac22 && ac == bc23 && bc == ab21
+                || ab == bc23 && ac == ab21 && bc == ac22)
+        {return true;}
         else
-            return false;
+        {return false;}
     }
 }
